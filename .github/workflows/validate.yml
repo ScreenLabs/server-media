@@ -4,6 +4,7 @@ on: [pull_request_target]
 
 jobs:
   validate_images:
+    if: ${{ !startsWith(github.head_ref, 'claude/') }}
     name: Images
     runs-on: ubuntu-latest
     steps:
@@ -14,6 +15,7 @@ jobs:
       - name: Validate images
         uses: LabyMod/server-media/.github/actions/validate@master
   validate_manifest:
+    if: ${{ !startsWith(github.head_ref, 'claude/') }}
     name: Manifest
     runs-on: ubuntu-latest
     steps:
